@@ -1,0 +1,29 @@
+<%%= index_table_javascript %>
+<%%= index_table_style %>
+
+<%% @title_painel = "Relação de <%= singular_table_name %>" %>
+<%% @btn_new = btn_novo(new_<%= singular_table_name %>_path) %>
+<table id="index" class="<%%= config_table %>" >
+  <thead>
+    <tr class="<%%= cor_title_table %>">
+    <% attributes.reject(&:password_digest?).each do |attribute| -%>
+    <th><%= attribute.human_name %></th>
+    <% end -%>
+    <th style="width: 10%"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+      <tr>
+        <% attributes.reject(&:password_digest?).each do |attribute| -%>
+        <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+         <% end -%>
+         <td>
+          <%%= btn_show(<%= singular_table_name %>) %>
+          <%%= btn_edit(edit_<%= singular_table_name %>_path(<%= singular_table_name %>)) %>
+          <%%= btn_delete(<%= singular_table_name %>) %>
+         </td>
+      </tr>
+    <%% end %>
+  </tbody>
+</table>

@@ -1,0 +1,28 @@
+<%= simple_form_for(@conta, wrapper: :input_group , defaults: { input_html: { class: 'form-control-sm', data: {controller: 'select2'} }, label_html: { class: 'col-form-label col-form-label-sm' }}  ) do |f| %>
+
+<%= error_messages_for(@conta) %>
+<div class="form-row justify-content-center">
+	<div class="col-sm-12 col-md-10 col-lg-8">
+		<div class="form_group">
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<%= f.association :grupocont, collection: @grupocontas, value_method: :id, label_method: :name_tipo ,prompt: "Escolha Grupo de Contas" %>
+				</div> 
+				<div class="form-group col-md-6">
+					<%= f.input :nome, class:"form-control", placeholder:"Digite o nome" %>
+				</div>
+			</div>
+			<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal_duvida"> Dúvidas</button>
+			<%= f.input :ctipo, as: :radio_buttons, collection: @ctipos %> 
+			<%= f.input :ativo %>
+			<hr>
+			<%= btn_save %>
+			<%= btn_cancel(contas_path) %>
+		</div>
+	</div>
+</div>
+<hr>
+
+<% end %>
+
+<%= render 'info' %>

@@ -1,0 +1,26 @@
+
+<% if @despesasgrupos.blank? %>
+<h2>Sem Despesas Lançadas para <%= @anoatual.ano.ano %> </h2>
+<% else %>
+<table id="pdespesa" class="table table-sm table-info">
+    <thead>
+      <tr align= 'center' >
+        <th>Conta</th>
+        <th><%= @anterior %></th>
+        <th><%= @atual %></th>
+        <th><%= @proximo %></th>
+    </tr>
+</thead>
+<tbody>
+  <% @despesasgrupos.each do |despesasgrupo| %>
+  <tr>
+    <td><%= despesasgrupo.conta.nome %></td> 
+    <td><%= valor_sm(despesasgrupo.anterior) %></td>
+    <td><%= valor_sm(despesasgrupo.atual) %></td>
+    <td><%= valor_sm(despesasgrupo.proximo) %></td>
+</tr>
+<% end %>
+
+</tbody>
+</table>
+<% end %>

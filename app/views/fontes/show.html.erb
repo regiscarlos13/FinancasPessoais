@@ -1,0 +1,34 @@
+<% @card_title = "Listagem da fonte" %>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @fonte.nome %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @fonte.endereco %>
+</p>
+
+<p>
+  <strong>Cidade:</strong>
+  <%= @fonte.cidade %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @fonte.telefone %>
+</p>
+
+<p>
+  <strong>Documento:</strong>
+  <%= @fonte.documento %>
+</p>
+
+<p>
+  <strong>Ativo:</strong>
+  <%= situacao(@fonte.ativo) %>
+</p>
+
+<%= btn_edit(edit_fonte_path(@fonte)) %> | 
+<%= btn_back(fontes_path) %>

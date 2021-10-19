@@ -1,0 +1,7 @@
+<%= table_for(@lancamentos_areceber) do %>
+<% field_table('Data') { |f| data_sm(f.data) } %>
+<% field_table('Conta') { |f| f.orcamento.conta.nome} %>
+<% field_table('Descrição') { |f| f.descricao} %>
+<% field_table('Valor') { |f| valor_sm(f.valor - f.pagamentos.sum(:valor))} %>
+<% field_table('Situação') { |f| vencimento(f.data) } %>
+<% end %>

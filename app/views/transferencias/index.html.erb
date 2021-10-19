@@ -1,0 +1,44 @@
+<%#= javascript_include_tag "transferencias"%>
+
+<% @title_painel = "Relação de Contas" %>
+
+<%= simple_form_for(@transferencia, url: transferencias_path) do |f| %>
+
+<%= error_messages_for(@transferencia) %>
+
+<div class="form-row justify-content-center">
+	<div class="col-sm-12 col-md-10 col-lg-8">
+		<div class="form_group">
+			<%= f.input :tipo, as: :radio_buttons, collection: @tipos, item_wrapper_class: 'custom-control-inline', label: 'Tipo: ' %>
+
+		 	<%= f.association :banco, label_method: :nome, label: 'Conta:' %>
+			<%= f.input :valor %>
+			<%= f.label 'Data:', class: 'col-form-label' %>
+			<%= f.date_field :data, :value => Time.now.strftime('%Y-%m-%d'),class: " form-control form-control-sm" %>
+
+			<%= f.simple_fields_for(:transferencia) do |ff| %>
+			<%= ff.input :obs, collection: @obs, label: 'Transação' %>
+			<%= ff.hidden_field :user_id, value: current_user.id %>
+			<% end %>
+			<%= btn_save %>
+			<% end %>
+
+
+		</div>
+	</div>
+</div>
+<hr>
+<div class="mt-4 mb-4">
+	
+<div class="table-responsive">
+  <%= table_for(@transferencias) do %>
+    <% field_table('#') { |f| tipo_conta_sm(f.tipo) } %>
+    <% field_table('Pagamento') { |f| data(f.data)} %>
+    <% field_table('Conta') { |f| f.banco.nome} %>
+    <% field_table('Descrição') { |f| f.lancamento.blank? ? f.transferencia.obs : f.lancamento.descricao} %>
+    <% field_table('Lançamento') { |f| f.lancamento.blank? ? data(f.data) : data(f.lancamento.data) } %>
+    <% field_table('Debito') { |f| valor_sm(f.debito_saldo)} %>
+    <% field_table('Credito') { |f| valor_sm(f.credito_saldo)} %>
+    <% field_table('') { |f| btn_delete(transferencia_path(f)) } %>
+  <% end %>    
+</div>

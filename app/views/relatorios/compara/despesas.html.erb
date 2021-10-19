@@ -1,0 +1,28 @@
+<% @title_painel = "Relação Despesas Previstas X Realizadas" %>
+
+<div class="table-responsive">
+<table class="table table-bordered table-striped  table-sm">
+	<thead>
+		<tr align= 'center' class="table-info">
+			<th>Conta</th>
+			<th>Previsto</th>
+			<th>Realizado</th>
+			<th>Diferença</th>
+		</tr>
+	</thead>
+	<tbody>
+			<% @lancamentos_apagar_compara.all.group_by(&:orcamento).each do |orcamento, lancamentos| %>
+			<% @saldo = 0%>
+			<% lancamentos.each do |lancamento| %>
+			<% @saldo += lancamento.valor %>	
+			<% end %>
+		<tr>
+			<td><b> <%= orcamento.conta.nome %></b></td>
+			<td align="center"><%= valor(orcamento.total) %></td>
+			<td align="center"><%= valor(@saldo) %></td>
+			<td align="center"><%= valor(orcamento.total - @saldo) %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+</div>

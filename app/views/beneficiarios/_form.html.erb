@@ -1,0 +1,19 @@
+<%= simple_form_for(@beneficiario) do |f| %>
+	<%= error_messages_for(@beneficiario) %>
+	<div class="form-row justify-content-center">
+	  <div class="col-sm-12 col-md-12 col-lg-6">
+	    <div class="form_group">
+    		<%= f.input :nome %>
+
+	    </div>
+	    <%= f.input :ativo %>
+		<hr>
+	    <%= btn_save %>
+	    <%= btn_cancel(beneficiarios_path) %>
+	</div>
+</div>
+
+
+
+<% end %>
+

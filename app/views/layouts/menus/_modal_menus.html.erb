@@ -1,0 +1,23 @@
+
+<!-- Modal -->
+<div class="modal fade" id="ano_modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Escolha o Ano</h5>
+        
+      </div>
+      <div class="modal-body">
+
+        <%= form_tag(sessions_path  , method: "get") do %>
+        <%= select_tag :year_select, options_from_collection_for_select(Ano.usuario(current_user), "id", "anos", cookies.encrypted[:selected_year]), :style => "width: 100%" %>
+        <div class="modal-footer">
+          <%= button_tag(type: 'submit', class: 'btn btn-primary', id: 'button_banco', name: nil) do %>
+          Salvar
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

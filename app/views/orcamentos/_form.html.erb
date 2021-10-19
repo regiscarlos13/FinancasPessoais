@@ -1,0 +1,46 @@
+<div data-controller='orcamento'>
+	
+<%= simple_form_for(@orcamento) do |f| %>
+
+<%= error_messages_for(@orcamento) %>
+<div class="form-group">
+	<div class="row"> 
+		<div class="col-sm-5">
+			<%= f.association :grupocont, collection: @grupocontas, value_method: :id, label_method: :nome ,prompt: "ESCOLHA O GRUPO DE CONTAS" %>
+		</div>
+		<div class="col-sm-5">
+			<%= f.association :conta,  value_method: :id, label_method: :nome ,  collection: @grupocontas,  as: :grouped_select, group_method: :contas, group_label_method: :nome, label: 'Escolha a Conta' %>
+		</div>
+		<div class="col-sm-2">
+			<%= f.input :total, data: {autonumeric: true}  %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3">
+			<%= f.input :janeiro %>
+			<%= f.input :fevereiro, class:"form-control", placeholder:"Digite o fevereiro" %>
+			<%= f.input :marco, class:"form-control", placeholder:"Digite o marco" %>
+		</div>
+		<div class="col-sm-3">
+			<%= f.input :abril, class:"form-control", placeholder:"Digite o abril" %>
+			<%= f.input :maio, class:"form-control", placeholder:"Digite o maio" %>
+			<%= f.input :junho, class:"form-control", placeholder:"Digite o junho" %>
+		</div>
+		<div class="col-sm-3">
+			<%= f.input :julho, class:"form-control", placeholder:"Digite o julho" %>
+			<%= f.input :agosto, class:"form-control", placeholder:"Digite o agosto" %>
+			<%= f.input :setembro, class:"form-control", placeholder:"Digite o setembro" %>
+		</div>
+		<div class="col-sm-3">
+			<%= f.input :outubro, class:"form-control", placeholder:"Digite o outubro" %>
+			<%= f.input :novembro, class:"form-control", placeholder:"Digite o novembro" %>
+			<%= f.input :dezembro, class:"form-control", placeholder:"Digite o dezembro" %>
+		</div>
+	</div>
+</div>
+<hr>
+<%= btn_save %>
+<%= btn_cancel(orcamentos_path) %>
+<% end %>
+
+</div>

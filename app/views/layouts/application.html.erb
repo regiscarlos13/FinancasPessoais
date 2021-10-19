@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Gerenciamento Finanças Pessoais</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+
+  <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <%#= stylesheet_pack_tag 'application' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+</head>
+
+
+<body data-flash-messages="<%= JSON.dump(flash.to_a) %>" data-controller="modal">
+
+<div id="spinner" class="loading" style="display:none;">Loading&#8230;</div>
+
+  <%#= render "layouts/messages" %>
+  <%= render "layouts/menus/menus" %>
+
+
+
+  <div class="container" >
+    <div class="d-flex justify-content-end mt-4">
+      <div class="p-2 bd-highlight"><%= @btn_print %></div>
+      <div class="p-2 bd-highlight"><%= @btn_new %></div>
+    </div>
+    <div class="card">
+      <div class="card-header" >
+        <b><%= @card_title %></b> 
+      </div>
+      <div class="card-body">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+
+
+  
+</body>
+</html>
+

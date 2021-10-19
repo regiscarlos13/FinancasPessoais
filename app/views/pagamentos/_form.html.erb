@@ -1,0 +1,49 @@
+
+
+<%= simple_form_for([@lancamento, @lancamento.pagamentos.build], wrapper: :input_group , defaults: { input_html: { class: 'form-control-sm', data: {controller: 'select2'} }, label_html: { class: 'col-form-label col-form-label-sm' } }, remote: true  ) do |f| %>
+
+
+<div class="form-row">
+	<div class="col-lg-3 col-12">
+		<%#= f.label 'Data:', class: 'col-form-label' %>
+		<%#= f.date_field :data, :value => Time.now.strftime('%Y-%m-%d') ,class: " form-control form-control-sm" %>
+		<%= f.input :data, as: :string, input_html: {type: 'date', value: Time.now.strftime('%Y-%m-%d')} %>
+	</div>
+	<div class="col-lg-2 col-12">
+		<%= f.input :valor, input_html:  {value: @lancamento.valor } %>
+
+	</div>
+	<div class="col-lg-2 col-12">
+		<%= f.input :juros %>
+
+	</div>
+	<div class="col-lg-2 col-12">
+		<%= f.input :multa %>
+	</div>
+	<div class="col-lg-3 col-12">
+	</div>
+</div>
+<div class="form-row">
+	<div class="col-lg-6 col-12">
+		<%= f.association :beneficiario, label_method: :nome, prompt: false%>
+	</div>
+	<div class="col-lg-6 col-12">
+		<%= f.association :banco, label_method: :nome, label: 'Conta:', prompt: false %>
+	</div>
+</div>
+<div class="modal-footer">
+	<%= btn_save(true) %>
+	<%= link_to "#", class: "btn btn-icon-split btn-danger btn-sm", data: {dismiss: "modal"}, onclick: "javascript:window.location.reload()" do %>
+	<span class="icon text-white-50">
+		<i class=" fa fa-arrow-left"></i>
+	</span>
+	<span class="text d-none d-lg-block d-xl-block d-md-block">Fechar</span>
+
+	
+	<% end %>
+</div>
+
+
+
+<% end %>
+<hr>

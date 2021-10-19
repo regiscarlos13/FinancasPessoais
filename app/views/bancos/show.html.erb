@@ -1,0 +1,21 @@
+<% @title_painel = "Listagem da banco" %>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @banco.nome %>
+</p>
+
+<p>
+  <strong>Agencia:</strong>
+  <%= @banco.agencia %>
+</p>
+
+
+<p>
+  <strong>Ativo:</strong>
+  <%= situacao(@banco.ativo) %>
+</p>
+
+
+<%= btn_edit(edit_banco_path(@banco)) %> | 
+<%= btn_back(bancos_path) %>

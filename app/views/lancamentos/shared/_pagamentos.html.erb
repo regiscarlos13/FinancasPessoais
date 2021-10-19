@@ -1,0 +1,45 @@
+<% if @lancamento.orcamento.blank?  %>
+
+<% else %>
+<div class="form-row">
+	<div class="col-5">
+		<strong>Descrição:</strong>
+		<%= @lancamento.descricao %>
+	</div>
+	<div class="col-5">
+		<% if @lancamento.fornecedor.blank? %>
+		<strong>Fonte:</strong>
+		<%= @lancamento.fonte.nome %>
+		<% elsif %>
+		<strong>Fornecedor:</strong>
+		<%= @lancamento.fornecedor.nome %>
+		<% else %>
+		<% end %>
+
+
+	</div>
+	<div class="col-2">
+		<%= tipo_conta(@lancamento.tipo) %>
+	</div>
+</div>
+<div class="form-row mt-2">
+	<div class="col-5">
+		<strong>Conta:</strong>
+		<%= @lancamento.orcamento.conta.nome %>
+	</div>
+	<div class="col-4">
+		<strong>Vencimento:</strong>
+		<%= data(@lancamento.data) %>
+	</div>
+	<div class="col-3">
+		<strong>Valor:</strong>
+		<%= valor(@lancamento.valor) %>
+		
+	</div>
+</div>	
+
+<% end %>
+<hr>
+ 
+<%= render partial: 'pagamentos/form' %>
+<%= render partial: 'pagamentos/index_pagamento' %>

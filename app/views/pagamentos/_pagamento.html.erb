@@ -1,0 +1,19 @@
+<tr data-id="<%= pagamento.id %>">
+	<td> <%= data(pagamento.data) %> </td>
+	<td> <%= pagamento.banco.nome %> </td>
+	<td> <%= valor(pagamento.valor) %> </td>
+	<td> <%= valor(pagamento.multa) %> </td>
+	<td> <%= valor(pagamento.juros) %> </td>
+	<td> <%= valor(pagamento.total) %> </td>
+	<td> 
+ 	<%= link_to  [pagamento.lancamento, pagamento],
+               method: :delete,
+               data: { confirm: 'Tem Certeza de Apagar Pagamento?'}, remote: true,  class: "btn btn-danger btn-sm" do  %>
+               	
+               	<i class="fa fa-trash"></i>
+
+
+               <% end %>
+	</td>
+
+</tr>

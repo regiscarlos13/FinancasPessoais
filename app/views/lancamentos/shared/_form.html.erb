@@ -1,0 +1,71 @@
+<%#= javascript_include_tag "pagamentos" %>
+
+
+<%= simple_form_for(@lancamento, wrapper: :input_group , defaults: { input_html: { class: 'form-control-sm', data: {controller: 'lancamentos'} }, label_html: { class: 'col-form-label col-form-label-sm' } } , remote: true ) do |f| %>
+
+<div class="form-row">
+	<div class="col-sm-12 col-md-3 col-lg-2">
+		<%= f.input :tipo, as: :radio_buttons, collection: @tipos,  label: 'Tipo: ', checked: 'Despesa', input_html: {data: {action: 'click->lancamentos#tipos'} } %>
+	</div> 	
+
+	<div class="col-sm-12 col-md-9 col-lg-10">
+		<div id="lista_despesa">
+			<%= f.association :orcamento, collection: @orcamento_list_despesa, value_method: :id, label_method: :nome_conta, label: 'Escolha a Conta Orçamentária:', input_html: {id: 'orcamento_list_despesa'}, prompt: false %>
+			
+		</div>
+		<div id="lista_receita"  >
+			<%= f.association :orcamento, collection: @orcamento_list_receita, value_method: :id, label_method: :nome_conta, label: 'Escolha a Conta Orçamentária:', input_html: { id: 'orcamento_list_receita'}, prompt: false %>
+			
+		</div>
+	</div> 	
+
+</div>
+
+<div class="form-row">
+	<div class="col-sm-12 col-md-12 col-lg-5">
+		<%= f.input :descricao,  label: 'Descrição:'  %>
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-3">
+		<%#= f.label 'Vencimento:', class: 'col-form-label' %>
+		<%#= value_date(f, :data) %>
+		<%= f.input :data, as: :string, input_html: {type: 'date'} %>
+
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-2">
+		<%= f.input :valor, label: 'Valor:' %>
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-2">
+		<%= disable_field(f, :parcela) %>
+	</div>
+	
+</div>
+
+<div class="form-row">
+	<div class="col-sm-12 col-md-12 col-lg-6">
+		<%= f.association :centro,  value_method: :id, label_method: :nome,prompt: false, label: 'Centro Controle:' %>
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-6">
+
+		<div id="fornecedor">
+		<%= f.association :fornecedor, value_method: :id, label_method: :nome,prompt: false, label: 'Fornecedor:' %>
+			
+		</div>
+		<div id="fonte">
+		<%= f.association :fonte,  value_method: :id, label_method: :nome,prompt: false, label: 'Fonte:' %>
+			
+		</div>
+
+	</div>
+	
+</div>
+
+
+
+<div class="modal-footer">
+
+	<%= button_tag ' Salvar', onclick: "myFunction()",  class: "btn btn-primary", data: { disable_with: '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Salvando...' } %>
+
+	<%= link_to " Fechar", "#", class: "btn btn-danger ", data: {dismiss: "modal"} %>
+</div>
+<% end %>
+

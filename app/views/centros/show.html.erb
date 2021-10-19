@@ -1,0 +1,15 @@
+<% @card_title = "Listagem da Centro" %>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @centro.nome %>
+</p>
+
+
+<p>
+  <strong>Ativo:</strong>
+  <%= situacao(@centro.ativo) %>
+</p>
+
+<%= btn_edit(edit_centro_path(@centro)) %> | 
+<%= btn_back(centros_path) %>

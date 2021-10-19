@@ -1,0 +1,11 @@
+pt-BR: 
+  activerecord:
+    attributes:
+      grupocont:
+        nome: Nome do Grupo
+      conta:
+        grupocont: Grupo da Conta
+        ctipo: Frequência da Conta
+      orcamento:
+        grupocont: Grupo da Conta
+ 

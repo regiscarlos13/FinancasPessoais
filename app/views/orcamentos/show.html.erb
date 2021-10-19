@@ -1,0 +1,42 @@
+<% @card_title = "Listagem do Orçamento" %>
+  
+  <div class="row">
+      <div class="col-sm-3">
+        <strong>Grupo da Conta: </strong><%= @orcamento.grupocont.nome %>
+      </div>
+      <div class="col-sm-2">
+        <strong>Conta: </strong><%= @orcamento.conta.nome %>
+        
+      </div>
+      <div class="col-sm-3">
+        <strong>Total: </strong><%= valor(@orcamento.total) %>
+
+      </div>
+  </div>
+  <legend></legend>
+<div class="row">
+  <div class="col-sm-3">
+    <p><strong>Janeiro: </strong><%= valor(@orcamento.janeiro) %></p>
+    <p><strong>Fevereiro: </strong><%= valor(@orcamento.fevereiro) %></p>
+    <p><strong>Março: </strong><%= valor(@orcamento.marco) %></p>
+    <p><strong>Abril: </strong><%= valor(@orcamento.abril) %></p>
+    <p><strong>Maio: </strong><%= valor(@orcamento.maio) %></p>
+    <p><strong>Junho: </strong><%= valor(@orcamento.junho) %></p>
+    
+  </div>
+  <div class="col-sm-3">
+    <p><strong>Julho: </strong><%= valor(@orcamento.julho) %></p>
+    <p><strong>Agosto: </strong><%= valor(@orcamento.agosto) %></p>
+    <p><strong>Setembro: </strong><%= valor(@orcamento.setembro) %></p>
+    <p><strong>Outubro: </strong><%= valor(@orcamento.outubro) %></p>
+    <p><strong>Novembro: </strong><%= valor(@orcamento.novembro) %></p>
+    <p><strong>Dezembro: </strong><%= valor(@orcamento.dezembro) %></p>
+    
+  </div>
+</div>
+<legend></legend>
+
+
+
+<%= btn_edit(edit_orcamento_path(@orcamento)) %> | 
+<%= btn_back(orcamentos_path) %>

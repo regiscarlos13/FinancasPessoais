@@ -1,0 +1,6 @@
+<% if lancamento.data > Date.today  %>
+<% @avencer += ( lancamento.valor - lancamento.pagamentos.sum(:valor) ) %>
+<% end %>
+<% if lancamento.data < Date.today  %>
+<% @vencidas += ( lancamento.valor - lancamento.pagamentos.sum(:valor) ) %>
+<% end %>

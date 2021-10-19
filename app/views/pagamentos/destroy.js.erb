@@ -1,0 +1,5 @@
+$('#pagamentos_table tr[data-id="<%= @pagamento.id %>"]').fadeOut(900,function(){
+  $(this).remove();
+});
+
+$.notify("Registro Removido Com Sucesso", "info");

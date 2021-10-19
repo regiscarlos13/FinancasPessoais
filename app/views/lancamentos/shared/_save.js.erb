@@ -1,0 +1,34 @@
+$("ul.errors").html("");
+
+<% if @lancamento.errors.any? %>
+
+  <% @lancamento.errors.full_messages.each do |message| %>
+
+    $.notify("<%= message %>", "error")
+  <% end %>
+
+<% else %>
+  $("#lancamento-modal").modal("hide");
+
+  <% if actionName == 'update' %>
+
+    var trRow = $('#lancamentos_table tr[data-id="<%= @lancamento.id %>"]');
+    var trRowPrev = trRow.prev();
+    trRow.remove();
+    
+    if (trRowPrev.data()){
+      trRowPrev.after("<%= j render 'lancamentos/shared/lancamento', lancamento: @lancamento %>");
+    }else{
+      $('#lancamentos_table').prepend("<%= j render 'lancamentos/shared/lancamento', lancamento: @lancamento %>");
+    $.notify("Atualizado com Sucesso", "success")
+
+    }
+  <% else %>
+      $('#lancamentos_table').append("<%= j render 'lancamentos/shared/lancamento', lancamento: @lancamento %>")
+
+      
+      $.notify("Criado com Sucesso", "success")
+  <% end %>
+
+<% end %>
+    location.reload(); 

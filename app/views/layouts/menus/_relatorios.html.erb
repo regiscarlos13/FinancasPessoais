@@ -1,0 +1,18 @@
+<%= link_to "Orçamento Geral", relatorios_orcamentos_orcamento_geral_path, class: "dropdown-item" %>
+<%= link_to 'Orçamento das Receitas',  relatorios_orcamentos_receitas_geral_path, class: "dropdown-item" %>
+<%= link_to 'Orçamento das Despesas',  relatorios_orcamentos_despesas_geral_path, class: "dropdown-item"%>
+
+<div class="dropdown-divider"></div>
+<%= link_to 'Contas à Pagar', relatorios_contas_apagar_path, class: "dropdown-item"  %>
+
+<%= link_to 'Contas à Receber', relatorios_contas_areceber_path	, class: "dropdown-item"  %>
+
+
+<div class="dropdown-divider"></div>
+<%= link_to 'Extrato de Contas', relatorios_bancos_extratos_path, class: "dropdown-item"  %>
+<%#= link_to 'Resumos', 'resumogruposreceitas_path', class: "dropdown-item disabled"  %>
+<div class="dropdown-divider"></div>
+<%= link_to 'Despesas Prevista X Realizadas',  relatorios_compara_despesas_path , class: "dropdown-item"  %>
+<%= link_to 'Receitas Prevista X Realizadas', relatorios_compara_receitas_path, class: "dropdown-item"  %>
+<div class="dropdown-divider"></div>
+<%= link_to 'Gastos por Tipo', relatorios_compara_gastos_path , class: "dropdown-item"  %>

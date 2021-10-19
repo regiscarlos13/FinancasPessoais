@@ -1,0 +1,15 @@
+<% @card_title = "Listagem da beneficiario" %>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @beneficiario.nome %>
+</p>
+
+<p>
+  <strong>Ativo:</strong>
+  <%= situacao(@beneficiario.ativo) %>
+</p>
+
+
+<%= btn_edit(edit_beneficiario_path(@beneficiario)) %> | 
+<%= btn_back(beneficiarios_path) %>

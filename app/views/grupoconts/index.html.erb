@@ -1,0 +1,12 @@
+<% @card_title = "Relação dos Grupos" %>
+<% @btn_print =  btn_print(grupoconts_path(format: :pdf)) %>
+<% @btn_new = btn_new(new_grupocont_path) %>
+
+<div class="table-responsive">
+	<%= table_for(@grupoconts) do %>
+	<% field_table('Tipo') { |f| tipo_conta(f.tipo) } %>
+	<% field_table('Conta') { |f| f.nome } %>
+	<% field_table('Situação') { |f| situacao(f.ativo) } %>
+	<% btn_for %>
+	<% end %>
+</div>

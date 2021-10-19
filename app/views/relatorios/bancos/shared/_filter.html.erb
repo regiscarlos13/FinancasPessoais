@@ -1,0 +1,13 @@
+ <div class="card-header mb-3 bg-light p-1 " style="height:42px" align="center" >
+      <%= form_tag( relatorios_bancos_extratos_path , method: "get") do %>
+
+        <%= select_tag :bancos, options_for_select(@bancos.collect{ |t| [t.nome, t.id]}, params[:bancos] ),id: 'selectBox', onchange: 'changeFunc()' %>
+
+        <%= select_tag :mes, options_for_select(@meses, params[:mes]), id: 'selectBox', onchange: 'changeFunc()' %>
+		
+        <%= button_tag(type: 'submit', class: 'btn btn-primary fa fa-search', name: nil, id: 'button') do %>
+        <% end %>
+      <% end %>
+
+  </div> 
+

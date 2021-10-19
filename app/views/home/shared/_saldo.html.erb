@@ -1,0 +1,29 @@
+<table id="saldo" class="table table-striped table-sm table-bordered ">
+	<thead>
+		<tr class= 'table-info', align= 'center'>
+			<th>Conta</th>
+			<th>Saldo</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @pagamentos_saldo.all.group_by(&:banco).each do |banco, pagamentos| %>
+
+		<% @saldo = 0 %>
+		
+		<% pagamentos.each do |pagamento| %>
+			
+		<% @saldo =  pagamento.tipo == 'Receita' ? @saldo += pagamento.total : @saldo -= pagamento.total %> 
+		<% end %>
+
+		<tr>
+			<td><%= banco.nome %></td>
+			<% if @saldo >= 0 %>
+			<td><FONT COLOR="0000FF"><strong><%= valor_sm(@saldo) %></strong> </td>
+			<% else %>
+			<td><FONT COLOR="red"><strong><%= valor_sm(@saldo) %></strong> </td>
+			<% end %>
+		</tr>
+		<% end %>
+	</tbody>
+
+</table>

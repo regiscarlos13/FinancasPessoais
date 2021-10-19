@@ -1,0 +1,24 @@
+<% @card_title = "Listagem da Conta" %>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @conta.nome %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @conta.tipo %>
+</p>
+
+<p>
+  <strong>Ativo:</strong>
+  <%= situacao(@conta.ativo) %>
+</p>
+
+<p>
+  <strong>Grupo da Conta:</strong>
+  <%= @conta.grupocont.nome %>
+</p>
+
+<%= btn_edit(edit_conta_path(@conta)) %> | 
+<%= btn_back(contas_path) %>

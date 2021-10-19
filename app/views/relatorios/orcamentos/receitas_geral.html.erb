@@ -1,0 +1,81 @@
+<% @title_painel = "Relação Receitas" %>
+
+<% @btn_imprimir =  btn_print(relatorios_orcamentos_receitas_geral_path(format: :pdf)) %>
+
+<% if @receitasgrupos.blank?  %>
+  <h1>Sem Registros</h1>
+<% else %>
+
+  <div class="table-responsive-md d-none d-md-block d-lg-block">
+    <% @receitasgrupos.group_by(&:grupocont).each do |grupocont, orcamentos| %>
+
+    <table class="table table-bordered table-sm table-hover">
+      <thead class= 'thead-light', align= 'center'>
+       <tr>
+        <th style="vertical-align: middle;" rowspan="<%= orcamentos.count+2 %>" ><%= grupocont.nome %> </th>
+          <th>1º Trimestre</th>
+          <th>2º Trimestre</th>
+          <th>3º Trimestre</th>
+          <th>4º Trimestre</th>
+          <th>Total</td>
+          </tr>
+        </thead>
+        <% orcamentos.each do |orcamento| %>
+        <tr>
+         <td><%= orcamento.conta.nome %></td>
+         <td><%= valor(orcamento.primeiro_trimeste) %></td>
+         <td><%= valor(orcamento.segundo_trimestre) %></td>
+         <td><%= valor(orcamento.terceiro_trimestre) %></td>
+         <td><%= valor(orcamento.quarto_trimestre) %></td>
+         <td><%= valor(orcamento.total) %></td>
+       </tr>
+       <% end %>
+       <tr align="center" class="active" style="font-weight:bold">
+        <td>Total</td>
+        <td><%= valor(@receitasgrupos.where(grupocont_id: grupocont.id).sum("#{:janeiro} + #{:fevereiro} + #{:marco}")) %></td>
+        <td><%= valor(@receitasgrupos.where(grupocont_id: grupocont.id).sum("#{:abril} + #{:maio} + #{:junho}")) %></td>
+        <td><%= valor(@receitasgrupos.where(grupocont_id: grupocont.id).sum("#{:julho} + #{:agosto} + #{:setembro}")) %></td>
+        <td><%= valor(@receitasgrupos.where(grupocont_id: grupocont.id).sum("#{:outubro} + #{:novembro} + #{:dezembro}")) %></td>
+        <td><%= valor(@receitasgrupos.where(grupocont_id: grupocont.id).sum(:total)) %></td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
+
+<div class="table-responsive-sm d-lg-none d-block">
+
+  <% @receitasgrupos.group_by(&:grupocont).each do |grupocont, orcamentos| %>
+
+  <table class="table table-bordered table-sm table-hover">
+    <thead class= 'thead-light', align= 'center'>
+     <tr>
+      <th style="vertical-align: middle;" rowspan="<%= orcamentos.count+2 %>" ><%= grupocont.nome %> </th>
+        <th>1º Trimestre</th>
+        <th>2º Trimestre</th>
+        <th>3º Trimestre</th>
+        <th>4º Trimestre</th>
+        <th>Total</td>
+        </tr>
+    </thead>
+      <% orcamentos.each do |orcamento| %>
+      <tr>
+       <td><%= orcamento.conta.nome %></td>
+       <td><%= valor_sm(orcamento.primeiro_trimeste) %></td>
+       <td><%= valor_sm(orcamento.segundo_trimestre) %></td>
+       <td><%= valor_sm(orcamento.terceiro_trimestre) %></td>
+       <td><%= valor_sm(orcamento.quarto_trimestre) %></td>
+       <td><%= valor_sm(orcamento.total) %></td>
+     </tr>
+     <% end %>
+     <tr align="center" class="active" style="font-weight:bold">
+      <td>Total</td>
+      <td><%= valor_sm(@receitasgrupos.where(grupocont_id: grupocont.id).sum("#{:janeiro} + #{:fevereiro} + #{:marco}")) %></td>
+      <td><%= valor_sm(@receitasgrupos.where(grupocont_id: grupocont.id).sum("#{:abril} + #{:maio} + #{:junho}")) %></td>
+      <td><%= valor_sm(@receitasgrupos.where(grupocont_id: grupocont.id).sum("#{:julho} + #{:agosto} + #{:setembro}")) %></td>
+      <td><%= valor_sm(@receitasgrupos.where(grupocont_id: grupocont.id).sum("#{:outubro} + #{:novembro} + #{:dezembro}")) %></td>
+      <td><%= valor_sm(@receitasgrupos.where(grupocont_id: grupocont.id).sum(:total)) %></td>
+    </tr>
+  </table>
+  <% end %>
+</div>
+  <% end %>

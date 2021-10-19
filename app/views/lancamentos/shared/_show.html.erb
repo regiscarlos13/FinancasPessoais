@@ -1,0 +1,31 @@
+<% if @pagamentos.blank? %>
+	<strong>Sem Registro de Pagamentos</strong>
+<% else %>
+	<table id="index" class="table table-bordered table-sm table-hover">
+		<thead class= 'thead-light', align= 'center'>
+			<tr>
+				<th>Data</th>
+				<th>Conta</th>
+				<th>valor</th>
+				<th>Multa</th>
+				<th>Juros</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @pagamentos.each do |pagamento| %>
+			<tr>
+				<td> <%= data(pagamento.data) %> </td>
+				<td> <%= pagamento.banco.nome %> </td>
+				<td> <%= valor(pagamento.valor) %> </td>
+				<td> <%= valor(pagamento.multa) %> </td>
+				<td> <%= valor(pagamento.juros) %> </td>
+				<td> <%= valor(pagamento.total) %> </td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<div class="card-header float-right">
+		<b>Total: <%= valor(@pagamentos.sum(:total)) %></b>
+	</div>
+<% end %>

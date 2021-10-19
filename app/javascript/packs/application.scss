@@ -1,0 +1,18 @@
+@import "~bootstrap/scss/bootstrap";
+@import "@fortawesome/fontawesome-free";
+@import "toastify-js/src/toastify";
+@import "../css/button"; 
+
+
+body {
+  background-color: var(--color-white-bis);
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--color-gray-darker);
+}
+
+
+:root {
+	--color-gray-darker: #262626;
+	//--color-white-bis: #f3f5f6;
+	--color-white-bis: #1770d01c;
+}

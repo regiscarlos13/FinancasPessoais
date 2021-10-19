@@ -1,0 +1,12 @@
+<% @card_title = "Relação de Banco" %>
+<% @btn_new = btn_new(new_banco_path) %>
+
+<div class="table-responsive"> 
+  <%= table_for(@bancos) do %>
+    <% field_table('Nome') { |f| f.nome} %>
+    <% field_table('Agencia') { |f| f.agencia} %>
+    <% field_table('Conta') { |f| f.conta} %>
+    <% field_table('Situação') { |f| situacao(f.ativo)} %>
+    <% btn_for %>
+  <% end %>
+</div>

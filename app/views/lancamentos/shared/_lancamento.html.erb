@@ -1,0 +1,33 @@
+<tr data-id="<%= lancamento.id %>">
+ <td><%= data(lancamento.data) %></td>
+ <td><%= tipo_conta(lancamento.tipo) %></td>
+ <td><%= lancamento.orcamento.blank? ? '' : lancamento.orcamento.conta.nome %></td>
+
+ <td><%= "#{lancamento.descricao} - #{lancamento.parcela}/#{ lancamento.number}" %></td>
+
+
+ <% if lancamento.tipo == 'Receita'%>
+ <td><FONT COLOR="0000FF"><strong> <%= valor(lancamento.valor) %></strong></td>
+  <% else %>
+  <td><FONT COLOR="red"><strong> <%= valor(lancamento.valor) %></strong></td>
+    <% end %>
+
+    <td><%= valor(lancamento.pagamentos.sum(:total)) %></td>
+
+    <td> <%= link_to  pagamento_path(lancamento), class: "btn btn-success btn-sm btn-icon-split", title: 'Realizar Pagamentos', remote: true do %>
+
+      <span class="icon text-white-50">
+        <i class="fas fa-wallet"></i>
+      </span>
+      <span class="text d-none d-lg-block d-xl-block">PAGMTS</span>
+
+      <% end %>
+
+
+
+    </td>
+
+    <td><%= btn_show((lancamento), true) %></td>
+    <td><%= btn_edit(edit_lancamento_path(lancamento), true) %></td>
+    <td><%= btn_delete(lancamento, true) %>  </td>
+  </tr>

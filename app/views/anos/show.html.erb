@@ -1,0 +1,17 @@
+<% @title_painel = "Listagem do ano" %>
+
+<p>
+  <strong>Ano:</strong>
+  <%= @ano.ano %>
+</p>
+
+<p>
+  <strong>Ativo:</strong>
+  <%= situacao(@ano.ativo) %>
+</p>
+
+
+
+
+<%= btn_edit(edit_ano_path(@ano)) %> | 
+<%= btn_back(anos_path) %>

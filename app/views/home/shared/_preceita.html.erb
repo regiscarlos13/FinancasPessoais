@@ -1,0 +1,26 @@
+
+<% if @receitasgrupos.blank? %>
+<h2>Sem Receitas Lançadas para <%= @anoatual.ano.ano %> </h2>
+<% else %>
+<table id="preceitas" class="table table-sm table-info">
+  <thead>
+   <tr align= 'center'>
+    <th >Conta</th>
+    <th><%= @anterior %></th>
+    <th><%= @atual %></th>
+    <th><%= @proximo %></th>
+  </tr>     
+</thead>
+<tbody>
+  <% @receitasgrupos.each do |receitasgrupo| %>
+  <tr>
+    <td><%= receitasgrupo.conta.nome %></td> 
+    <td><%= valor_sm(receitasgrupo.anterior) %></td>
+    <td><%= valor_sm(receitasgrupo.atual) %></td>
+    <td><%= valor_sm(receitasgrupo.proximo) %></td>
+  </tr>
+  <% end %>
+
+</tbody>
+</table>
+<% end %>

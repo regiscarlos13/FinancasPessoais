@@ -1,0 +1,23 @@
+ <div class="card-header mb-3 bg-light p-1 " style="height:42px" align="center" >
+      <%= form_tag( lancamentos_path , method: "get") do %>
+
+        <%= link_to lancamentos_path(:q => @anterior ), class: 'btn btn-primary btn-sm' do %>
+        	<i class="fa fa-angle-double-left"></i>
+        <% end %>
+        <%= link_to lancamentos_path(:q =>  @proximo ), class: 'btn btn-primary btn-sm' do %>
+        <i class="fa fa-angle-double-right"></i>
+        <% end %>
+        <%= select_tag :q, options_for_select(@meses, params[:q]), id: 'selectBox', onchange: 'changeFunc()' %>
+
+
+        <%= button_tag(type: 'submit', class: 'btn btn-primary btn-sm', id: 'button', name: nil) do %>
+        <i class="fa fa-search"></i>
+        <% end %>
+        <%= link_to lancamentos_path(:q => @data), class: 'btn btn-primary btn-sm', title:'Mês Atual' do %>
+          <i class="fa fa-calendar"></i>
+        <% end %>
+
+
+
+      <% end %>
+  </div> 

@@ -1,0 +1,30 @@
+<% if @orcamento_list.blank? %>
+<h3>Sem Registro</h3>
+<% else %>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Conta</th>
+			<th>Receita</th>
+			<th>Despesa</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @orcamento_list.each do |orcamento_list|%>
+		<tr>
+			<td><%= orcamento_list.conta.nome %></td>
+			<td align="center"><%= orcamento_list.conta.tipo == 'Receita' ? valor(orcamento_list.janeiro) : '-' %></td>
+			<td align="center"><%= orcamento_list.conta.tipo == 'Despesa' ? valor(orcamento_list.janeiro) : '-' %></td>
+		</tr>
+		<% end %>
+	</tbody>
+	<thead>
+		<tr>
+			<th>Total</th>
+			<th><%= valor(@receitasgrupos.sum(:janeiro)) %> </th>
+			<th><%= valor(@despesasgrupos.sum(:janeiro)) %> </th>
+		</tr>
+	</thead>
+</table>
+<strong>Saldo: <%= saldo(:janeiro) %> </strong>
+<% end %>

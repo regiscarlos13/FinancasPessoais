@@ -1,0 +1,99 @@
+<%= javascript_include_tag "filterano" %>
+<% @title_painel = "Relatório Orçamentário de #{@anos_atual[0].ano}" %>
+
+<% @btn_imprimir = btn_print(relatorios_orcamentos_orcamento_geral_path(format: :pdf)) %>
+
+<div class=" form-check form-check-inline">
+	Escolha o mês a ser Exibido:
+	<input class="form-check-input" type="checkbox"  id="chk_janeiro" value="janeiro" checked >Janeiro
+	<input class="form-check-input" type="checkbox"  id="chk_fevereiro" value="fevereiro" checked >Fevereiro
+	<input class="form-check-input" type="checkbox"  id="chk_marco" value="marco" checked >Março
+	<input class="form-check-input" type="checkbox"  id="chk_abril" value="abril" checked >Abril
+	<input class="form-check-input" type="checkbox"  id="chk_maio" value="maio" checked >Maio
+	<input class="form-check-input" type="checkbox"  id="chk_junho" value="junho" checked >Junho
+	<input class="form-check-input" type="checkbox"  id="chk_julho" value="julho" checked >Julho
+	<input class="form-check-input" type="checkbox"  id="chk_agosto" value="agosto" checked >Agosto
+	<input class="form-check-input" type="checkbox"  id="chk_setembro" value="setembro" checked >Setembro
+	<input class="form-check-input" type="checkbox"  id="chk_outubro" value="outubro" checked >Outubro
+	<input class="form-check-input" type="checkbox"  id="chk_novembro" value="novembro" checked >Novembro
+	<input class="form-check-input" type="checkbox"  id="chk_dezembro" value="dezembro" checked >Dezembro
+</div>
+<hr>
+
+<div class="row">
+  
+<div class="col-sm-4" id="janeiro">
+	<fieldset class="scheduler-border">
+		<legend class="scheduler-border">Janeiro</legend>
+		<%= render "relatorios/soma_meses/janeiro" %>
+	</fieldset>
+</div>
+<div class="col-sm-4" id="fevereiro">
+	<fieldset class="scheduler-border">
+		<legend class="scheduler-border">Fevereiro</legend>
+		<%= render "relatorios/soma_meses/fevereiro" %>
+	</fieldset>
+</div>
+  
+
+<div class="col-sm-4" id="marco">
+	<fieldset class="scheduler-border">
+		<legend class="scheduler-border">Março</legend>
+		<%= render "relatorios/soma_meses/marco" %>
+	</fieldset>
+</div>
+<div class="col-sm-4" id="abril">
+	<fieldset class="scheduler-border">
+		<legend class="scheduler-border">Abril</legend>
+		<%= render "relatorios/soma_meses/abril" %>
+	</fieldset>
+</div>
+<div class="col-sm-4" id="maio">
+	<fieldset class="scheduler-border">
+		<legend class="scheduler-border">Maio</legend>
+		<%= render "relatorios/soma_meses/maio" %>
+	</fieldset>
+</div>
+<div class="col-sm-4" id="junho">
+	<fieldset class="scheduler-border">
+		<legend class="scheduler-border">Junho</legend>
+		<%= render "relatorios/soma_meses/junho" %>
+	</fieldset>
+</div>
+<div class="col-sm-4" id="julho">
+	<fieldset class="scheduler-border">
+		<legend class="scheduler-border">Julho</legend>
+		<%= render "relatorios/soma_meses/julho" %>
+	</fieldset>
+</div>
+<div class="col-sm-4" id="agosto">
+	<fieldset class="scheduler-border">
+		<legend class="scheduler-border">Agosto</legend>
+		<%= render "relatorios/soma_meses/agosto" %>
+	</fieldset>
+</div>
+<div class="col-sm-4" id="setembro">
+	<fieldset class="scheduler-border">
+		<legend class="scheduler-border">Setembro</legend>
+		<%= render "relatorios/soma_meses/setembro" %>
+	</fieldset>
+</div>
+<div class="col-sm-4" id="outubro">
+	<fieldset class="scheduler-border">
+		<legend class="scheduler-border">Outubro</legend>
+		<%= render "relatorios/soma_meses/outubro" %>
+	</fieldset>
+</div>
+<div class="col-sm-4" id="novembro">
+	<fieldset class="scheduler-border">
+		<legend class="scheduler-border">Novembro</legend>
+		<%= render "relatorios/soma_meses/novembro" %>
+	</fieldset>
+</div>
+<div class="col-sm-4" id="dezembro">
+	<fieldset class="scheduler-border">
+		<legend class="scheduler-border">Dezembro</legend>
+		<%= render "relatorios/soma_meses/dezembro" %>
+	</fieldset>
+</div>
+</div>

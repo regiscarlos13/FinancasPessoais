@@ -1,0 +1,1 @@
+function changeFunc(){selectBox.options[selectBox.selectedIndex].value;$("#button").click()}

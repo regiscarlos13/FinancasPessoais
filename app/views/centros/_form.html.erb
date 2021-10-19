@@ -1,0 +1,16 @@
+<%= simple_form_for(@centro) do |f| %>
+	<%= error_messages_for(@centro) %>
+	<div class="form-row justify-content-center">
+		<div class="col-sm-12 col-md-10 col-lg-8">
+			<div class="form_group">
+						<%= f.input :nome, class:"form-control", placeholder:"Digite o nome" %>
+						<%= f.input :ativo, class:"form-control", placeholder:"Digite o ativo" %>
+
+					<hr>
+					<%= btn_save %>
+					<%= btn_cancel(centros_path) %>
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>

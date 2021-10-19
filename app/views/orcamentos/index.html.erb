@@ -1,0 +1,18 @@
+<% @card_title = "Relação do Orçamento" %>
+<% @btn_new = btn_new(new_orcamento_path) %>
+
+<div class="table-responsive">
+
+  <%= table_for(@orcamentos)  do%>
+
+  <% field_table('Tipo') { |f| tipo_conta(f.grupocont.tipo) } %>
+  <% field_table('Conta') { |f| f.conta.nome } %>
+  <% field_table('Grupo') { |f| f.grupocont.nome } %>
+  <% field_table('1º Semestre') { |f| valor(f.primeiro_semestre)  } %>
+  <% field_table('2º Semestre') { |f| valor(f.segundo_semestre) } %>
+  <% field_table('Total') { |f| valor(f.total) } %>
+  <% btn_for %>
+
+  <% end %>
+
+</div>

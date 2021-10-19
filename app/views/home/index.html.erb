@@ -1,0 +1,24 @@
+<%= @variavel_verificacao %>
+
+<% @card_title = "Resumo Geral" %>
+
+
+<div class="row">
+	<div class="col col-lg-4">
+		<strong class="badge badge-success">Saldo Contas</strong>
+		<%= render partial: 'home/shared/saldo' %>
+		<hr>
+	</div>
+	<div class="col">
+		<strong class="badge badge-success">Contas à Pagar</strong>
+		<div class="table-responsive">
+			<%= render partial: 'home/shared/apagar' %>
+
+		</div>
+		<hr>
+		<strong class="badge badge-success">Contas a Receber</strong> 
+		<div class="table-responsive">
+			<%#= render partial: 'home/shared/areceber' %>
+		</div>
+	</div>
+</div>

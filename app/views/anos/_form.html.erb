@@ -1,0 +1,12 @@
+<% @card_title = 'Cadastro de Anos' %>
+
+<%= simple_form_for(@ano) do |f| %>
+	<div class="col-sm-6">
+		<div class="form-group">
+			<%= f.input :ano,  collection: (Date.current.year-2)..(Date.current.year+10), include_blank: false, input_html: {data: {controller: 'select2'} } %>
+			<%= f.input :ativo, class:"form-control", placeholder:"Digite o ativo" %>
+		</div>
+		<%= btn_save %>
+		<%= btn_cancel(anos_path) %>
+	</div>
+<% end %>

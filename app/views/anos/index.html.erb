@@ -1,0 +1,10 @@
+<% @card_title = "Relação de " + @anos.model_name.human(count: 2) %>
+<% @btn_new = btn_new(new_ano_path) %>
+
+<div class="table-responsive">
+  <%= table_for(@anos, 'index') do %>
+    <% field_table('Ano') { |f| f.ano} %>
+    <% field_table('Situação') { |f| situacao(f.ativo)} %>
+    <% btn_for %>
+  <% end %>
+</div>

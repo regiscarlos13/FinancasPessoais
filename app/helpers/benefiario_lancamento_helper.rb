@@ -1,0 +1,2 @@
+module BenefiarioLancamentoHelper
+end

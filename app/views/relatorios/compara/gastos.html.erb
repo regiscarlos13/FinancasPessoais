@@ -1,0 +1,51 @@
+<%= select2('#banco') %>
+<%= select2('#beneficiario') %>
+<%= select2('#centro') %>
+
+<% @title_painel = "Relação de Gastos" %>
+
+<div class="row mb-3 card-body bg-light p-1 "">
+
+	<div class="ml-3">
+		<%= form_tag( relatorios_compara_gastos_path , method: "get") do %>
+		<%= select_tag :banco, options_from_collection_for_select(@bancos, "id", "nome", params[:banco]) %>
+		<%= button_tag(type: 'submit', class: 'btn btn-primary fa fa-search', id: 'button_banco', name: nil) do %>
+		<% end %>
+		<% end %>			
+	</div>
+	
+	<div class="ml-3">
+		<%= form_tag( relatorios_compara_gastos_path , method: "get") do %>
+		<%= select_tag :beneficiario, options_from_collection_for_select(@beneficiarios, "id", "nome", params[:beneficiario]) %>
+		<%= button_tag(type: 'submit', class: 'btn btn-primary fa fa-search', id: 'button_beneficiario', name: nil) do %>
+		<% end %>
+		<% end %>
+	</div>
+
+	<div class="ml-3">
+		<%= form_tag( relatorios_compara_gastos_path , method: "get") do %>
+		<%= select_tag :centro, options_from_collection_for_select(@centros, "id", "nome", params[:centro]) %>
+		<%= button_tag(type: 'submit', class: 'btn btn-primary fa fa-search', id: 'button_centro', name: nil) do %>
+		<% end %>
+		<% end %>
+	</div>
+
+
+
+
+</div> 
+
+
+
+<div class="table-responsive">
+	<%= table_for(@pagamentos, 'index') do %>
+	<% field_table('Tipo') { |f| tipo_conta(f.tipo)} %>
+	<% field_table('Data') { |f| data(f.data)} %>
+	<% field_table('Valor') { |f| valor_sm(f.valor)} %>
+	<% field_table('Multa') { |f| valor_sm(f.multa)} %>
+	<% field_table('Juros') { |f| valor_sm(f.juros)} %>
+	<% field_table('Total') { |f| valor_sm(f.total)} %>
+	<% field_table('Descrição') { |f| f.lancamento.descricao} %>
+	<% end %>
+</div>
+<strong>Total: </strong> <%= valor(@total) %>

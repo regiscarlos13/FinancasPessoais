@@ -1,0 +1,32 @@
+$("ul.errors").html("");
+
+<% if @pagamento.errors.any? %>
+
+  <% @pagamento.errors.full_messages.each do |message| %>
+
+    $.notify("<%= message %>", "error")
+  <% end %>
+
+<% else %>
+
+  <% if actionName == 'update' %>
+
+    var trRow = $('#pagamentos_table tr[data-id="<%= @pagamento.id %>"]');
+    var trRowPrev = trRow.prev();
+    trRow.remove();
+    
+    if (trRowPrev.data()){
+      trRowPrev.after("<%= j render 'pagamentos/shared/pagamento', pagamento: @pagamento %>");
+    }else{
+      $('#pagamentos_table').prepend("<%= j render 'pagamentos/shared/pagamento', pagamento: @pagamento %>");
+    $.notify("Atualizado com Sucesso", "success")
+
+    }
+  <% else %>
+      $('#pagamentos_table').append("<%= j render 'pagamentos/shared/pagamento', pagamento: @pagamento %>")
+      $.notify("Criado com Sucesso", "success")
+  <% end %>
+
+<% end %>
+
+location.reload(); 

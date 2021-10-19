@@ -1,0 +1,17 @@
+<% @card_title = "Novo Registro de " + @grupocont.model_name.human(count: 1) %>
+
+<%#= singular_table_name %>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @grupocont.nome %>
+</p>
+
+
+<p>
+  <strong>Ativo:</strong>
+  <%= situacao(@grupocont.ativo) %>
+</p>
+
+<%= btn_edit(edit_grupocont_path(@grupocont)) %> | 
+<%= btn_back(grupoconts_path) %>

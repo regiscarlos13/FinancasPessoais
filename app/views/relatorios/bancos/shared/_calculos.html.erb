@@ -1,0 +1,14 @@
+
+<% @total_receita = 0 %>
+<% @pagamentos_receitas.each do |f|  %>
+
+<% @total_receita += f.total %>
+
+<% end %>
+
+<% @total_despesa = 0 %>
+<% @pagamentos_despesas.each do |f|  %>
+
+<% @total_despesa += f.total %>
+
+<% end %>
